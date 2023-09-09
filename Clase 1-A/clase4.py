@@ -29,7 +29,7 @@ def obtener_datos_nodos(lista, datos=[]):  #La función obtener_datos_nodos es o
     return obtener_datos_nodos(lista.siguiente, datos)
 
 # Uso de las funciones
-num_nodos = 10  # Puedo cambiar este valor al número deseado de nodos que yo quiera
+num_nodos = 19  # Puedo cambiar este valor al número deseado de nodos que yo quiera
 lista_cabeza = crear_lista_nodos(num_nodos)
 datos_nodos = obtener_datos_nodos(lista_cabeza)
 print(f"Nodos creados: {datos_nodos}")
