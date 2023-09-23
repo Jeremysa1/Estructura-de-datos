@@ -1,7 +1,7 @@
 import requests
 import random
 
-url = 'https://humble-guide-7v7xjpwqxp9hjww-8000.app.github.dev'
+url = '.............'
 
 names = ["Jeremy", "jesus", "andres", "kerly", "melissa"]
 last_names = ["sanchez", "gonzales", "giron", "cordoba", "morales"]
@@ -20,7 +20,7 @@ for _ in range(5):
     element_to_enqueue = generate_element()
     response = requests.post(f'{url}/encolar', json=element_to_enqueue)
     
-    if response.status_code == 400:
+    if response.status_code == 40:
         data = response.json()
         print(f"Element enqueued successfully: {data}")
     else:
