@@ -1,7 +1,7 @@
 import requests
 import random
 
-url = '.............'
+url = 'https://scaling-lamp-g4q76465w5rvcppx4-8000.app.github.dev/'
 
 names = ["Jeremy", "jesus", "andres", "kerly", "melissa"]
 last_names = ["sanchez", "gonzales", "giron", "cordoba", "morales"]
