@@ -20,7 +20,7 @@ for _ in range(5):
     element_to_enqueue = generate_element()
     response = requests.post(f'{url}/encolar', json=element_to_enqueue)
     
-    if response.status_code == 40:
+    if response.status_code == 400:
         data = response.json()
         print(f"Element enqueued successfully: {data}")
     else:

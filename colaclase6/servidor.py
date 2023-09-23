@@ -6,7 +6,7 @@ cola = Cola()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "Beautiful World"}
 
 @app.get("/estado")
 def estado():
