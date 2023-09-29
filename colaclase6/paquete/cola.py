@@ -1,87 +1,84 @@
+from .tipos import Item
+
 class Nodo:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+    def __init__(self, valor: Item, mensaje_id: int):
+        self.valor = valor         
+        self.mensaje_id = mensaje_id  
+        self.siguiente = None       
 
 class Cola:
     def __init__(self):
-        self.front = None
-        self.rear = None
-        self.message_id = 1 
+        self.primero = None           
+        self.ultimo = None            
+        self.contador_id = 1          
 
-    def is_empty(self):
-        return self.front is None
+    def esta_vacia(self):
+        return self.primero is None
 
-    def encolar(self, value):
-        value['id'] = self.message_id
-        new_node = Nodo(value)
-        if self.is_empty():
-            self.front = new_node
+    def encolar(self, valor: Item):
+        nuevo_nodo = Nodo(valor, self.contador_id)
+        if self.esta_vacia():
+            self.primero = nuevo_nodo
         else:
-            self.rear.next = new_node
-        self.rear = new_node
-        self.message_id += 1
-
+            self.ultimo.siguiente = nuevo_nodo
+        self.ultimo = nuevo_nodo
+        self.contador_id + = 1
+    
     def desencolar(self):
-        z
+        if self.esta_vacia():
+            return None
+        valor = self.primero.valor
+        mensaje_id = self.primero.mensaje_id 
+        self.primero = self.primero.siguiente
+        if self.primero is None:
+            self.ultimo = None
+        return{"mensaje_id": mensaje_id, "valor": valor} #SE DEVUELVE EL MENSAJE DESENCOLADO
 
-        current_node = self.front
-        new_id = 1
-        while current_node:
-            current_node.value['id'] = new_id
-            new_id += 1
-            current_node = current_node.next
+     def ver_listado(self):
+        contenido[]
+        actual = self.primero
+        while contenido:
+            contenido.append({"mensaje_id": actual.mensaje.id, "valor": self.primero.valor})
+            actual = actual.siguiente 
+            return contenido  #SE DEVUELVE LA LISTA DE MENSAJES 
 
-        return value
-
-    def ver_listado(self):
-        elements = []
-        current_node = self.front
-        while current_node:
-            elements.append(current_node.value)
-            current_node = current_node.next
-        return elements
-
-    def ver_primero(self):
-        if not self.is_empty():
-            return self.front.value
+     def ver ultimo(self):
+        if self.ultimo:
+            return {"mensaje_id": self.ultimo.mensaje_id, "valor": self.ultimo.valor}
+        else:
+            return None
+    
+     def ver_primero(self):
+         if self.primero:
+            return {"mensaje_id": self.primero.mensaje_id, "valor": self.primero.valor}
         else:
             return None
 
-    def ver_ultimo(self):
-        if not self.is_empty():
-            return self.rear.value
-        else:
-            return None
+     def contar(self):
+         count = 0
+         actual = self.primero
+         while actual is not None:
+             count += 1
+            actual = actual.siguiente  
+        return count  #.....
+        
 
-    def contar(self):
-        counter = 0
-        current_node = self.front
-        while current_node:
-            counter += 1
-            current_node = current_node.next
-        return counter
+     def eliminar_mensaje(self, mensaje_id: int) -> bool:
+         actual = self.primero
+        anterior = None
 
-    def desencolar_id(self, message_id):
-        current_node = self.front
-        previous_node = None
-        while current_node:
-            if current_node.value['id'] == message_id:
-                if previous_node:
-                    previous_node.next = current_node.next
-                else:
-                    self.front = current_node.next
-                if current_node == self.rear:
-                    self.rear = previous_node
+        while actual and actual.mensaje_id != mensaje_id:
+            anterior = actual
+            actual = actual.siguiente
 
-                new_front = self.front
-                new_id = 1
-                while new_front:
-                    new_front.value['id'] = new_id
-                    new_id += 1
-                    new_front = new_front.next
+        if actual:
+            if anterior:
+             anterior.siguiente = actual.siguiente
+            else:
+                self.primero = actual.siguiente
 
-                return current_node.value
-            previous_node = current_node
-            current_node = current_node.next
-        return None
+            if not actual.siguiente:
+                self.ultimo = anterior
+            return True  # El mensaje se eliminó exitosamente
+
+        return False  # El mensaje con el mensaje_id no se encontró en la cola
