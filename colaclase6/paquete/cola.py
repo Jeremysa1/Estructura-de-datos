@@ -55,16 +55,16 @@ class Cola:
             return None
 
      def contar(self):
-         count = 0
-         actual = self.primero
-         while actual is not None:
-             count += 1
+        count = 0
+        actual = self.primero
+        while actual is not None:
+            count += 1
             actual = actual.siguiente  
         return count  #.....
         
 
      def eliminar_mensaje(self, mensaje_id: int) -> bool:
-         actual = self.primero
+        actual = self.primero
         anterior = None
 
         while actual and actual.mensaje_id != mensaje_id:
