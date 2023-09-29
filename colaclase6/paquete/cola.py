@@ -23,12 +23,7 @@ class Cola:
         self.message_id += 1
 
     def desencolar(self):
-        if self.is_empty():
-            return None
-        value = self.front.value
-        self.front = self.front.next
-        if self.front is None:
-            self.rear = None
+        z
 
         current_node = self.front
         new_id = 1

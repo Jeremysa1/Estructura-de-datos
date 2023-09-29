@@ -1,28 +1,15 @@
 import requests
-import random
 
 url = 'https://scaling-lamp-g4q76465w5rvcppx4-8000.app.github.dev/'
 
-names = ["Jeremy", "jesus", "andres", "kerly", "melissa"]
-last_names = ["sanchez", "gonzales", "giron", "cordoba", "morales"]
-items = ["Frutas", "zapatos", "ropa deportiva", "detergentes", "utiles escolares"]
+# ejemplo request en GET
+r = requests.get(url)
+print(r.text)
 
-def generate_element():
-    first_name = random.choice(names)
-    last_name = random.choice(last_names)
-    products = [random.choice(items) for _ in range(2)]
-    return {
-        "name": f"{first_name} {last_name}",
-        "products": products
-    }
-
-for _ in range(5):
-    element_to_enqueue = generate_element()
-    response = requests.post(f'{url}/encolar', json=element_to_enqueue)
-    
-    if response.status_code == 400:
-        data = response.json()
-        print(f"Element enqueued successfully: {data}")
-    else:
-        print(f'Error in POST to /encolar: {response.status_code}')
-
+# ejemplo request en POST
+r = requests.post(url + 'encolar', json={'nombre': 'Jeremy', 'productos': ['kiwi', ],"CC":78945})
+r = requests.post(url + 'encolar', json={'nombre': 'Andres', 'productos': ['Manzana'],"CC":654321})
+r = requests.post(url + 'encolar', json={'nombre': 'Jesus', 'productos': ['Carambolo'],"CC":55789})
+r = requests.post(url + 'encolar', json={'nombre': 'Kerly', 'productos': ['Longaniza'],"CC":96321})
+r = requests.post(url + 'encolar', json={'nombre': 'Melissa', 'productos': ['tomate'],"CC":14789})
+print(r.text)
